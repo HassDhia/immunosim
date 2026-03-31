@@ -1,0 +1,66 @@
+{
+  "immunosim/CheckpointInhibitor-v0": {
+    "random": {
+      "mean_reward": -115.99208128832294,
+      "std_reward": 1.3266262445336703,
+      "mean_episode_length": 26.0,
+      "min_reward": -118.6616124932848,
+      "max_reward": -111.73923682683454
+    },
+    "heuristic": {
+      "mean_reward": -120.69166736645094,
+      "std_reward": 2.842170943040401e-14,
+      "mean_episode_length": 26.0,
+      "min_reward": -120.69166736645097,
+      "max_reward": -120.69166736645097
+    }
+  },
+  "immunosim/CombinationTherapy-v0": {
+    "random": {
+      "mean_reward": -129.2107489788711,
+      "std_reward": 63.984469003026106,
+      "mean_episode_length": 6.22,
+      "min_reward": -315.6652703505436,
+      "max_reward": -52.77747566398419
+    },
+    "heuristic": {
+      "mean_reward": -55.17527476563989,
+      "std_reward": 0.0,
+      "mean_episode_length": 2.0,
+      "min_reward": -55.17527476563989,
+      "max_reward": -55.17527476563989
+    }
+  },
+  "immunosim/CARTCell-v0": {
+    "random": {
+      "mean_reward": -60.715880393918795,
+      "std_reward": 0.404302269967668,
+      "mean_episode_length": 1.25,
+      "min_reward": -62.684889049010636,
+      "max_reward": -60.39250661587906
+    },
+    "heuristic": {
+      "mean_reward": -60.581973049751056,
+      "std_reward": 7.105427357601002e-15,
+      "mean_episode_length": 1.0,
+      "min_reward": -60.58197304975105,
+      "max_reward": -60.58197304975105
+    }
+  },
+  "immunosim/AdaptiveDosing-v0": {
+    "random": {
+      "mean_reward": -102.17155381436696,
+      "std_reward": 4.308312325713084,
+      "mean_episode_length": 26.0,
+      "min_reward": -113.89151078339972,
+      "max_reward": -92.89160461268273
+    },
+    "heuristic": {
+      "mean_reward": -78.89166582735525,
+      "std_reward": 2.842170943040401e-14,
+      "mean_episode_length": 26.0,
+      "min_reward": -78.89166582735523,
+      "max_reward": -78.89166582735523
+    }
+  }
+}

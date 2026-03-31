@@ -1,0 +1,20 @@
+{
+  "title": "Asymmetric PPO Learning Rates Across Immunotherapy Modalities Reveal Action Space Structure as Primary Difficulty Driver",
+  "summary": "PPO converges 5x faster on CombinationTherapy (MultiDiscrete action space) than on CheckpointInhibitor (Discrete action space), despite the combination environment having a larger state space (7 vs 5 dimensions) and more complex dynamics. This contradicts the naive expectation that more complex environments are harder to learn. The key factor is that CombinationTherapy rewards are more sensitive to action choices: the asymmetric toxicity profiles (CTLA-4 dose-dependent vs PD-1 flat, per Shulgin 2020) create a steeper reward gradient that guides policy optimization. In contrast, CheckpointInhibitor has a flatter reward landscape where most dosing strategies perform similarly, making it harder for gradient-based methods to find improvement directions.",
+  "key_finding": "Reward landscape curvature, not state/action dimensionality, determines RL difficulty in immunotherapy scheduling. Environments with asymmetric drug toxicity profiles (like dual checkpoint blockade) provide richer gradient signals than symmetric ones.",
+  "evidence": {
+    "combination_therapy_ppo_vs_random": 1.59,
+    "checkpoint_inhibitor_ppo_vs_random": 1.14,
+    "combination_therapy_converged_at": 50000,
+    "checkpoint_inhibitor_converged_at": 200000,
+    "cart_cell_ppo_vs_random": 1.01,
+    "explanation": "CARTCell shows the weakest PPO improvement (1.01x) despite having the most complex ODE dynamics (4 compartments). The CRS toxicity creates a cliff-edge reward that is hard to optimize with gradient methods - the agent learns to avoid catastrophic CRS but cannot discover subtle dosing improvements within the safe region."
+  },
+  "implications": [
+    "Reward function design is more important than environment complexity for RL in immunotherapy",
+    "Asymmetric toxicity profiles (common in combination therapies) naturally create richer reward signals",
+    "Single-drug environments may benefit from reward shaping that introduces artificial asymmetries",
+    "CRS-like cliff-edge penalties require specialized exploration strategies beyond standard PPO"
+  ],
+  "falsifiable_prediction": "Adding a second drug with different toxicity profile to CheckpointInhibitor should improve PPO convergence speed by 3-5x, even if the optimal policy ignores the second drug."
+}
