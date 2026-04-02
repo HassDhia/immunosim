@@ -51,7 +51,7 @@ PATIENT_PARAMETER_RANGES: dict[str, dict[str, Any]] = {
         "range": [1.0e4, 1.0e7],
         "unit": "cells",
         "description": "Baseline circulating effector immune cells",
-        "source": "Kuznetsov 1994 estimated equilibrium",
+        "source": "Kuznetsov-Taylor-Perelson 1994 estimated equilibrium",
     },
 }
 
@@ -62,7 +62,7 @@ class PatientGenerator:
 
     Based on Eastman et al. (2021) approach: train RL with randomized patient
     parameters to learn robust policies. Parameter ranges from Butner et al.
-    (2020) 245-patient cohort and Kuznetsov 1994 parameter estimation.
+    (2020) 245-patient cohort and Kuznetsov-Taylor-Perelson 1994 parameter estimation.
 
     SIMPLIFICATION: Assumes independent parameter distributions. In reality,
     tumor growth rate and immune infiltration are correlated (fast-growing
@@ -122,7 +122,7 @@ class PatientGenerator:
                 np.exp(self.rng.uniform(np.log(lo), np.log(hi)))
             )
 
-            # Kuznetsov-Taylor model parameters with perturbation
+            # Kuznetsov-Taylor-Perelson model parameters with perturbation
             for param in ["sigma", "delta", "rho", "mu"]:
                 default = KT_RANGES[param]["default"]
                 lo_kt, hi_kt = KT_RANGES[param]["range"]

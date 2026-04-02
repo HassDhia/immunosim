@@ -48,7 +48,7 @@ The RL-immunotherapy intersection remains underexplored. While RL has been appli
 We present \textsc{ImmunoSim}, a Python package providing four Gymnasium-compatible RL environments for cancer immunotherapy optimization:
 
 \begin{enumerate}
-    \item \textbf{CheckpointInhibitor-v0}: Anti-PD-1 monotherapy dosing using Kuznetsov-Taylor tumor-immune dynamics \citep{Kuznetsov1994} with Nikolopoulou PD-1 pharmacodynamics \citep{Nikolopoulou2018}.
+    \item \textbf{CheckpointInhibitor-v0}: Anti-PD-1 monotherapy dosing using Kuznetsov-Taylor-Perelson tumor-immune dynamics \citep{Kuznetsov1994} with Nikolopoulou PD-1 pharmacodynamics \citep{Nikolopoulou2018}.
     \item \textbf{CombinationTherapy-v0}: Dual anti-PD-1 + anti-CTLA-4 blockade with synergy modeling \citep{Nikolopoulou2021} and asymmetric toxicity profiles \citep{Shulgin2020}.
     \item \textbf{CARTCell-v0}: CAR-T cell infusion optimization using the CARTmath model \citep{Barros2021} with cytokine release syndrome toxicity \citep{Santurio2025}.
     \item \textbf{AdaptiveDosing-v0}: Adaptive response-based dosing with pseudo-progression handling via the Butner-Cristini patient model \citep{Butner2020}.
@@ -141,7 +141,7 @@ This asymmetry is central to the CombinationTherapy environment's learning dynam
 % ============================================================
 \section{Mathematical Models}
 
-\subsection{Kuznetsov-Taylor Tumor-Immune Model}
+\subsection{Kuznetsov-Taylor-Perelson Tumor-Immune Model}
 
 The base model \citep{Kuznetsov1994} describes effector cell ($E$) and tumor cell ($T$) dynamics:
 \begin{align}

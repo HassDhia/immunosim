@@ -14,7 +14,7 @@ optimizing cancer immunotherapy treatment schedules. Each environment wraps vali
 mathematical models from the tumor immunology literature, enabling RL agents to discover
 dosing strategies that outperform standard clinical protocols.
 
-The package implements ODE-based tumor-immune dynamics from Kuznetsov-Taylor (1994),
+The package implements ODE-based tumor-immune dynamics from Kuznetsov-Taylor-Perelson (1994),
 checkpoint inhibitor pharmacodynamics from Nikolopoulou (2018, 2021), CAR-T cell kinetics
 from Barros CARTmath (2021), and cytokine release syndrome modeling from Santurio (2025).
 
@@ -64,7 +64,7 @@ env.close()
 ```
 immunosim/
   models/
-    tumor_immune.py      -- Kuznetsov-Taylor (1994) 2-ODE base model
+    tumor_immune.py      -- Kuznetsov-Taylor-Perelson (1994) 2-ODE base model
     checkpoint_inhibitor.py -- Anti-PD-1, Anti-CTLA-4, Dual checkpoint modules
     cart_cell.py         -- CARTmath (Barros 2021) + CRS (Santurio 2025)
     patient.py           -- Domain randomization + pseudo-progression detection

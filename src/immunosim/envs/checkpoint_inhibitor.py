@@ -1,6 +1,6 @@
 """CheckpointInhibitorEnv-v0: Optimize anti-PD-1 dosing schedule for tumor control.
 
-Uses Kuznetsov-Taylor (1994) tumor-immune ODE extended with Nikolopoulou (2018)
+Uses Kuznetsov-Taylor-Perelson (1994) tumor-immune ODE extended with Nikolopoulou (2018)
 anti-PD-1 pharmacodynamics.
 """
 

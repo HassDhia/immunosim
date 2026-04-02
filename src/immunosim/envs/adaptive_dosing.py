@@ -1,6 +1,6 @@
 """AdaptiveDosingEnv-v0: Adaptive dosing with pseudo-progression handling.
 
-Uses Butner-Cristini (2020) 3-parameter patient model + Kuznetsov-Taylor dynamics.
+Uses Butner-Cristini (2020) 3-parameter patient model + Kuznetsov-Taylor-Perelson dynamics.
 """
 
 from __future__ import annotations

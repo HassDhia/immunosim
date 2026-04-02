@@ -1,4 +1,4 @@
-"""Tests for Kuznetsov-Taylor tumor-immune model."""
+"""Tests for Kuznetsov-Taylor-Perelson tumor-immune model."""
 
 import numpy as np
 import pytest
@@ -10,7 +10,7 @@ class TestKuznetsovTaylorModel:
     """Test the base tumor-immune ODE model."""
 
     def test_default_parameters(self):
-        """Default parameters match Kuznetsov 1994 Table 1."""
+        """Default parameters match Kuznetsov-Taylor-Perelson 1994 Table 1."""
         model = KuznetsovTaylorModel()
         assert model.sigma == 1.3e4
         assert model.delta == 0.0412

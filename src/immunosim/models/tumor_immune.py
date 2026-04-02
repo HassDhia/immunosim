@@ -1,10 +1,10 @@
-"""Kuznetsov-Taylor (1994) tumor-immune ODE model.
+"""Kuznetsov-Taylor-Perelson (1994) tumor-immune ODE model.
 
 Implements the canonical two-compartment (effector cells E, tumor cells T) system
-from Kuznetsov et al. (1994) "Nonlinear dynamics of immunogenic tumors: parameter
+from Kuznetsov, Taylor, and Perelson (1994) "Nonlinear dynamics of immunogenic tumors: parameter
 estimation and global bifurcation analysis," Bull. Math. Biol. 56(2), 295-321.
 
-All default parameters sourced from Table 1 of Kuznetsov 1994 (BCL1 lymphoma in chimeric mice).
+All default parameters sourced from Table 1 of Kuznetsov, Taylor, and Perelson (1994) (BCL1 lymphoma in chimeric mice).
 """
 
 from __future__ import annotations
@@ -17,7 +17,7 @@ from numpy.typing import NDArray
 from scipy.integrate import solve_ivp
 
 
-# PARAMETER_RANGES: validated ranges from Kuznetsov 1994 Table 1 and
+# PARAMETER_RANGES: validated ranges from Kuznetsov-Taylor-Perelson 1994 Table 1 and
 # de Pillis-Radunskaya-Wiseman 2005 human data.
 PARAMETER_RANGES: dict[str, dict[str, Any]] = {
     "sigma": {
@@ -25,69 +25,69 @@ PARAMETER_RANGES: dict[str, dict[str, Any]] = {
         "range": [1.0e3, 1.0e5],
         "unit": "cells/day",
         "description": "Constant immune cell source rate (thymic output + basal proliferation)",
-        "source": "Kuznetsov 1994 Table 1",
+        "source": "Kuznetsov-Taylor-Perelson 1994 Table 1",
     },
     "delta": {
         "default": 0.0412,
         "range": [0.01, 0.1],
         "unit": "1/day",
         "description": "Natural death rate of effector cells",
-        "source": "Kuznetsov 1994 Table 1",
+        "source": "Kuznetsov-Taylor-Perelson 1994 Table 1",
     },
     "rho": {
         "default": 0.1245,
         "range": [0.05, 0.5],
         "unit": "1/day",
         "description": "Maximum rate of immune cell proliferation stimulated by tumor",
-        "source": "Kuznetsov 1994 Table 1",
+        "source": "Kuznetsov-Taylor-Perelson 1994 Table 1",
     },
     "eta": {
         "default": 2.019e7,
         "range": [1.0e6, 1.0e9],
         "unit": "cells",
         "description": "Half-saturation constant for immune stimulation (Michaelis-Menten)",
-        "source": "Kuznetsov 1994 Table 1",
+        "source": "Kuznetsov-Taylor-Perelson 1994 Table 1",
     },
     "mu": {
         "default": 3.422e-10,
         "range": [1.0e-11, 1.0e-8],
         "unit": "1/(cell*day)",
         "description": "Rate of tumor cell kill by effector cells (bilinear interaction)",
-        "source": "Kuznetsov 1994 Table 1",
+        "source": "Kuznetsov-Taylor-Perelson 1994 Table 1",
     },
     "alpha": {
         "default": 0.18,
         "range": [0.05, 0.5],
         "unit": "1/day",
         "description": "Intrinsic tumor growth rate (exponential phase)",
-        "source": "Kuznetsov 1994 Table 1",
+        "source": "Kuznetsov-Taylor-Perelson 1994 Table 1",
     },
     "beta": {
         "default": 1.0e-9,
         "range": [1.0e-11, 1.0e-7],
         "unit": "1/cell",
         "description": "Inverse carrying capacity (logistic growth saturation)",
-        "source": "Kuznetsov 1994 Table 1",
+        "source": "Kuznetsov-Taylor-Perelson 1994 Table 1",
     },
     "gamma": {
         "default": 1.0,
         "range": [0.1, 10.0],
         "unit": "dimensionless",
         "description": "Immune cell inactivation rate per tumor-effector encounter",
-        "source": "Kuznetsov 1994 Table 1",
+        "source": "Kuznetsov-Taylor-Perelson 1994 Table 1",
     },
 }
 
 
 @dataclass
 class KuznetsovTaylorModel:
-    """Two-ODE Kuznetsov-Taylor tumor-immune dynamics model.
+    """Two-ODE Kuznetsov-Taylor-Perelson tumor-immune dynamics model.
 
     State variables:
         E: effector immune cells (e.g., cytotoxic T lymphocytes)
         T: tumor cells
 
-    ODEs (Kuznetsov 1994 Eqs. 1-2):
+    ODEs (Kuznetsov, Taylor, and Perelson 1994 Eqs. 1-2):
         dE/dt = sigma + rho * E * T / (eta + T) - mu_e * E * T - delta * E
         dT/dt = alpha * T * (1 - beta * T) - mu * E * T
 
@@ -98,7 +98,7 @@ class KuznetsovTaylorModel:
 
     SIMPLIFICATION: Uses logistic tumor growth (alpha * T * (1 - beta * T)) instead of
     Gompertzian growth. Both exhibit saturation at large T, but logistic is analytically
-    simpler and yields identical qualitative bifurcation structure (Kuznetsov 1994 Sec. 3).
+    simpler and yields identical qualitative bifurcation structure (Kuznetsov, Taylor, and Perelson 1994 Sec. 3).
     """
 
     sigma: float = 1.3e4
