@@ -61,7 +61,7 @@ We present \textsc{ImmunoSim}, a Python package providing four Gymnasium-compati
 
 \subsection{Tumor-Immune ODE Models}
 
-The mathematical modeling of tumor-immune interactions traces to Stepanova (1980) and was formalized by \citet{Kuznetsov1994}, who developed a two-ODE system with Michaelis-Menten immune stimulation and bilinear kill terms, fitted to BCL1 lymphoma data. \citet{dePillis2001} extended this to a four-population system with optimal control, and \citet{dePillis2005} validated an expanded model against human data distinguishing NK cells from CD8+ T cells.
+The mathematical modeling of tumor-immune interactions traces to Stepanova (1980) and was formalized by Kuznetsov, Taylor, Makalkin, and Perelson \citeyearpar{Kuznetsov1994}, who developed a two-ODE system with Michaelis-Menten immune stimulation and bilinear kill terms, fitted to BCL1 lymphoma data. \citet{dePillis2001} extended this to a four-population system with optimal control, and \citet{dePillis2005} validated an expanded model against human data distinguishing NK cells from CD8+ T cells.
 
 \subsection{Checkpoint Inhibitor Pharmacodynamics}
 
@@ -143,7 +143,7 @@ This asymmetry is central to the CombinationTherapy environment's learning dynam
 
 \subsection{Kuznetsov-Taylor-Perelson Tumor-Immune Model}
 
-The base model \citep{Kuznetsov1994} describes effector cell ($E$) and tumor cell ($T$) dynamics:
+The base model \citep[Kuznetsov, Taylor, Makalkin, and Perelson]{Kuznetsov1994} describes effector cell ($E$) and tumor cell ($T$) dynamics:
 \begin{align}
     \frac{dE}{dt} &= \sigma + \frac{\rho E T}{\eta + T} - \gamma \mu E T - \delta E \label{eq:kt_E} \\
     \frac{dT}{dt} &= \alpha T (1 - \beta T) - \mu E T \label{eq:kt_T}
